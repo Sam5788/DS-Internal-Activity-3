@@ -90,7 +90,8 @@ int main() {
     for (int i = 0; i < N; i++) {
         insert(hashTable, arr[i]);
     }
-
+    cout << "\n\nTesting Duplicate Key:";
+insert(hashTable, 28);
     cout << "\n\nFinal Hash Table:";
     displayTable(hashTable);
 

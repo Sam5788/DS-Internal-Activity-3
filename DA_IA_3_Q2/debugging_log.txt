@@ -1,3 +1,8 @@
 **Milestone 1: Personalized Dataset**
 
 I generated my personalized dataset using PRN seed 128 and the formula v[i] = (S + 13 × i) mod 100. I stored all 20 generated values in a C++ array. Initially, I verified the calculations manually to avoid incorrect values. I compiled and executed the program successfully, and all 20 values were displayed correctly.
+
+
+**Commit 5 – Duplicate Key Handling Test**
+
+Tested the duplicate-key handling in the hash table by attempting to insert the existing key 28 again. The program calculated its initial hash index as 5, detected that the key was already present, and displayed "Duplicate key. Not inserted." This confirmed that the duplicate-checking condition works correctly and prevents repeated values from being stored in the hash table.
