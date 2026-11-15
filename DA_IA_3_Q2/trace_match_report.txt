@@ -1,0 +1,80 @@
+# Q2 – TRACE-MATCH REPORT
+
+## 1. Personalization Details
+
+- PRN: 0128
+- Seed (S): 128
+- Dataset Size: 20
+- Hash Table Size: 23
+- Hash Function: key % 23
+- Collision Handling: Linear Probing
+
+## 2. Personalized Dataset
+
+28, 41, 54, 67, 80, 93, 6, 19, 32, 45, 58, 71, 84, 97, 10, 23, 36, 49, 62, 75
+
+## 3. Predicted Hash Indexes
+
+Before executing the final program, the expected initial hash indexes were calculated manually using key % 23.
+
+| Key | Calculation | Initial Index |
+|---:|---|---:|
+| 28 | 28 % 23 | 5 |
+| 41 | 41 % 23 | 18 |
+| 54 | 54 % 23 | 8 |
+| 67 | 67 % 23 | 21 |
+| 80 | 80 % 23 | 11 |
+| 93 | 93 % 23 | 1 |
+| 6 | 6 % 23 | 6 |
+| 19 | 19 % 23 | 19 |
+| 32 | 32 % 23 | 9 |
+| 45 | 45 % 23 | 22 |
+| 58 | 58 % 23 | 12 |
+| 71 | 71 % 23 | 2 |
+| 84 | 84 % 23 | 15 |
+| 97 | 97 % 23 | 5 |
+| 10 | 10 % 23 | 10 |
+| 23 | 23 % 23 | 0 |
+| 36 | 36 % 23 | 13 |
+| 49 | 49 % 23 | 3 |
+| 62 | 62 % 23 | 16 |
+| 75 | 75 % 23 | 6 |
+
+## 4. Predicted Collision Trace
+
+- Key 97: Initial index 5 is occupied by 28. Index 6 is occupied by 6. Therefore, 97 is inserted at index 7.
+- Key 75: Initial index 6 is occupied. Linear probing checks indexes 7, 8, 9, 10, 11, 12 and 13. Index 14 is empty, so 75 is inserted at index 14.
+
+## 5. Predicted Final Hash Table
+
+| Index | Value | Index | Value |
+|---:|---:|---:|---:|
+| 0 | 23 | 12 | 58 |
+| 1 | 93 | 13 | 36 |
+| 2 | 71 | 14 | 75 |
+| 3 | 49 | 15 | 84 |
+| 4 | Empty | 16 | 62 |
+| 5 | 28 | 17 | Empty |
+| 6 | 6 | 18 | 41 |
+| 7 | 97 | 19 | 19 |
+| 8 | 54 | 20 | Empty |
+| 9 | 32 | 21 | 67 |
+| 10 | 10 | 22 | 45 |
+| 11 | 80 | | |
+
+## 6. Actual Program Output
+
+The program was compiled and executed successfully. It inserted all 20 dataset values into the hash table using the division method and linear probing. The actual output showed the collision messages and the final hash table.
+
+The duplicate-key test was also performed using key 28. The program displayed:
+
+- Initial Index: 5
+- Duplicate key. Not inserted.
+
+## 7. Trace-Match Comparison
+
+The manually predicted hash indexes and the actual program output were compared. All 20 values were inserted at the expected positions. The collision handling for keys 97 and 75 also matched the predicted results.
+
+## 8. Discrepancies and Explanation
+
+No discrepancy was observed between the predicted and actual final hash table. The program produced the expected results for the personalized dataset, collision handling, and duplicate-key test.
