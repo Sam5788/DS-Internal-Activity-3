@@ -13,21 +13,59 @@ using namespace std;
 #define SIZE 23
 #define N 20
 
+int arr[N] = {
+    28, 41, 54, 67, 80,
+    93, 6, 19, 32, 45,
+    58, 71, 84, 97, 10,
+    23, 36, 49, 62, 75
+};
+
 // Division Hash Function
 int hashFunction(int key) {
     return key % SIZE;
 }
 
+// Display Hash Table
+void displayTable(int table[]) {
+    cout << "\nIndex\tValue\n";
+    for (int i = 0; i < SIZE; i++) {
+        cout << i << "\t";
+        if (table[i] == -1)
+            cout << "Empty";
+        else
+            cout << table[i];
+        cout << endl;
+    }
+}
+
+// Insert using Linear Probing
+void insert(int table[], int key) {
+    int index = hashFunction(key);
+    int start = index;
+
+    cout << "\nInserting: " << key;
+    cout << "\nInitial Index: " << index;
+
+    while (table[index] != -1) {
+        if (table[index] == key) {
+            cout << "\nDuplicate key. Not inserted.\n";
+            return;
+        }
+
+        cout << "\nCollision at index: " << index;
+        index = (index + 1) % SIZE;
+
+        if (index == start) {
+            cout << "\nHash Table is Full!\n";
+            return;
+        }
+    }
+
+    table[index] = key;
+    cout << "\nInserted at index: " << index << endl;
+}
+
 int main() {
-
-    // Personalized Dataset
-    int arr[N] = {
-        28, 41, 54, 67, 80,
-        93, 6, 19, 32, 45,
-        58, 71, 84, 97, 10,
-        23, 36, 49, 62, 75
-    };
-
     int hashTable[SIZE];
 
     // Initialize Hash Table
@@ -35,39 +73,28 @@ int main() {
         hashTable[i] = -1;
     }
 
-    // Display Heading
     cout << "================================";
     cout << "\n     MANGO VARIETY HASH TABLE";
     cout << "\n================================";
-
     cout << "\nPRN Seed: 128";
     cout << "\nHash Table Size: " << SIZE;
 
-    // Display Dataset
     cout << "\n\nPersonalized Dataset:\n";
-
     for (int i = 0; i < N; i++) {
         cout << arr[i] << " ";
     }
 
-    // Display Initial Hash Table
-    cout << "\n\nInitial Hash Table:\n";
+    cout << "\n\nStarting Linear Probing...";
 
-    for (int i = 0; i < SIZE; i++) {
-        cout << i << " -> " << hashTable[i] << endl;
-    }
-
-    // Display Hash Function Results
-    cout << "\nDivision Hash Function Results:\n";
-
+    // Insert all dataset values
     for (int i = 0; i < N; i++) {
-
-        cout << arr[i] << " -> "
-             << hashFunction(arr[i]) << endl;
-
+        insert(hashTable, arr[i]);
     }
 
-    cout << "\nProgram Completed Successfully.";
+    cout << "\n\nFinal Hash Table:";
+    displayTable(hashTable);
+
+    cout << "\nProgram Completed Successfully.\n";
 
     return 0;
 }
