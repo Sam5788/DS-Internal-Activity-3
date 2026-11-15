@@ -1,7 +1,20 @@
+# Q2 – Debugging Log
+
 **Milestone 1: Personalized Dataset**
 
 I generated my personalized dataset using PRN seed 128 and the formula v[i] = (S + 13 × i) mod 100. I stored all 20 generated values in a C++ array. Initially, I verified the calculations manually to avoid incorrect values. I compiled and executed the program successfully, and all 20 values were displayed correctly.
 
+**Commit 2 – Hash Table Initialization**
+
+Created a hash table of size 23 and initialized every position with -1 to represent an empty slot. This provided a clear starting structure before inserting the personalized dataset.
+
+**Commit 3 – Division Hash Function**
+
+Implemented the division hash function using key % 23. Tested the function with the personalized dataset and displayed the initial hash index for each value.
+
+**Commit 4 – Linear Probing Collision Handling**
+
+Implemented linear probing to resolve collisions. When a calculated index was occupied, the program checked the next available position using (index + 1) % 23. The program successfully inserted all 20 dataset values into the hash table.
 
 **Commit 5 – Duplicate Key Handling Test**
 
