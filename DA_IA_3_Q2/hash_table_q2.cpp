@@ -3,9 +3,11 @@
 using namespace std;
 
 // PRN: 0128
+// Seed: 128
 // Scenario: Mango Varieties
-// Dataset size: 20
-// Hash table size: 23
+// Hash Table Size: 23
+
+#define SIZE 23
 
 int main() {
 
@@ -16,16 +18,27 @@ int main() {
         23, 36, 49, 62, 75
     };
 
-    cout << "MANGO VARIETY HASH TABLE";
-    cout << "\nPRN Seed: 128";
+    int hashTable[SIZE];
 
-    cout << "\n\nPersonalized Dataset:\n";
+    // Initialize hash table
+    for (int i = 0; i < SIZE; i++) {
+        hashTable[i] = -1;
+    }
+
+    cout << "MANGO VARIETY HASH TABLE\n";
+    cout << "PRN Seed: 128\n";
+
+    cout << "\nPersonalized Dataset:\n";
 
     for (int i = 0; i < 20; i++) {
         cout << arr[i] << " ";
     }
 
-    cout << "\n\nDataset generated successfully.";
+    cout << "\n\nInitial Hash Table:\n";
+
+    for (int i = 0; i < SIZE; i++) {
+        cout << i << " -> " << hashTable[i] << endl;
+    }
 
     return 0;
 }
